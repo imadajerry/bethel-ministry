@@ -57,19 +57,19 @@ export default function StructuredData() {
       {
         "@type": "Person",
         name: "Frederick Lalrindika",
-        jobTitle: "General Superintendent",
+        jobTitle: "Chairman/Speaker",
       },
     ],
     member: [
       {
         "@type": "Person",
         name: "Lalremmawia",
-        jobTitle: "Executive Secretary / Evangelist",
+        jobTitle: "Vice Chairman/Worship Leader",
       },
       {
         "@type": "Person",
         name: "Lalruatpuia Chhakchhuak",
-        jobTitle: "Secretary / Evangelist",
+        jobTitle: "Secretary / Guitarist",
       },
     ],
     knowsAbout: [
