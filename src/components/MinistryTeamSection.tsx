@@ -118,7 +118,7 @@ export default function MinistryTeamSection() {
       <div className="relative w-full aspect-square bg-white overflow-hidden">
         <Image
           src={member.image}
-          alt={member.name}
+          alt={`${member.name}${member.role ? ` ${member.role}` : ""} - Bethel Ministry Leadership`}
           fill
           style={{
             transform: member.scale ? `scale(${member.scale})` : undefined,

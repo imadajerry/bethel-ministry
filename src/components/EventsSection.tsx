@@ -267,7 +267,7 @@ export default function EventsSection() {
       <div className="relative w-full aspect-[2.3/1] sm:aspect-[2.1/1] rounded-2xl overflow-hidden shadow-xs border border-neutral-100 bg-neutral-100">
         <Image
           src={event.image}
-          alt={event.title}
+          alt={`${event.title} - Bethel Ministry Mizoram Event`}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -445,7 +445,7 @@ export default function EventsSection() {
                   >
                     <Image
                       src={event.image}
-                      alt={event.title}
+                      alt={`${event.title} - Bethel Ministry Mizoram Program Showcase`}
                       fill
                       priority={idx === 0 || idx === selectedIndex}
                       className="object-cover"
@@ -537,7 +537,7 @@ export default function EventsSection() {
                         <div className="relative w-full aspect-[2/1] rounded-lg overflow-hidden bg-neutral-100">
                           <Image
                             src={event.image}
-                            alt={event.title}
+                            alt={`${event.title} thumbnail`}
                             fill
                             sizes="124px"
                             className="object-cover"
