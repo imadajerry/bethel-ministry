@@ -70,12 +70,14 @@ export function extractSheetId(input: string): string {
 }
 
 /**
- * Builds Google Sheets CSV export URL
+ * Builds Google Sheets CSV export URL with cache-busting timestamp
  */
 export function getSheetCsvUrl(sheetId: string, sheetName?: string): string {
   const cleanId = extractSheetId(sheetId);
   const base = `https://docs.google.com/spreadsheets/d/${cleanId}/gviz/tq?tqx=out:csv`;
-  return sheetName ? `${base}&sheet=${encodeURIComponent(sheetName)}` : base;
+  const nameParam = sheetName ? `&sheet=${encodeURIComponent(sheetName)}` : "";
+  // Append timestamp so Google edge CDN never returns stale data
+  return `${base}${nameParam}&t=${Date.now()}`;
 }
 
 /**
@@ -100,12 +102,29 @@ export function applyTextsFromRows(base: SiteContent, rows: string[][]): SiteCon
       (h.includes("value") || h.includes("content") || h.includes("text"))
   );
 
-  if (keyIdx === -1 || valueIdx === -1) {
-    return base;
+  // Fallback: extract social URLs, emails, etc. directly from sheet text
+  const fullText = rows.map((r) => r.join(" ")).join("\n");
+  const igMatch = fullText.match(/https?:\/\/(?:www\.)?instagram\.com\/[^\s",]+/i);
+  if (igMatch) {
+    updated.texts.social.instagramUrl = igMatch[0].trim();
+  }
+  const ytMatch = fullText.match(/https?:\/\/(?:www\.)?youtube\.com\/[^\s",]+/i);
+  if (ytMatch) {
+    updated.texts.social.youtubeUrl = ytMatch[0].trim();
+  }
+  const fbMatch = fullText.match(/https?:\/\/(?:www\.)?facebook\.com\/[^\s",]+/i);
+  if (fbMatch) {
+    updated.texts.social.facebookUrl = fbMatch[0].trim();
+  }
+  const emailMatch = fullText.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/i);
+  if (emailMatch) {
+    updated.texts.contact.email = emailMatch[0].trim();
   }
 
-  for (let i = 1; i < rows.length; i++) {
-    const row = rows[i];
+  // If column headers are identified, apply specific row-by-row overrides
+  if (keyIdx !== -1 && valueIdx !== -1) {
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
     const section = (sectionIdx !== -1 ? row[sectionIdx] : "").toLowerCase().trim();
     const key = (row[keyIdx] || "").trim();
     const value = row[valueIdx] !== undefined ? row[valueIdx].trim() : "";
@@ -198,6 +217,7 @@ export function applyTextsFromRows(base: SiteContent, rows: string[][]): SiteCon
       updated.texts.social.facebookUrl = value;
     }
   }
+}
 
   return updated;
 }

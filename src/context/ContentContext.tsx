@@ -39,23 +39,19 @@ export function ContentProvider({ children }: { children: React.ReactNode }) {
 
     setIsLiveConnected(true);
 
-    // Check cache in localStorage
-    if (!force && typeof window !== "undefined") {
+    // 1. Instantly hydrate from cache for 0ms initial render
+    if (typeof window !== "undefined") {
       try {
         const cached = localStorage.getItem(CACHE_KEY);
-        const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
-        const now = Date.now();
-
-        if (cached && cachedTime && now - parseInt(cachedTime, 10) < GOOGLE_SHEETS_CONFIG.cacheDurationMs) {
+        if (cached) {
           setContent(JSON.parse(cached));
-          setLastUpdated(new Date(parseInt(cachedTime, 10)).toLocaleTimeString());
-          return;
         }
       } catch (e) {
         // Ignore cache parse error
       }
     }
 
+    // 2. Always fetch fresh content from Google in the background (no blocking delay)
     setIsLoading(true);
     try {
       const fetched = await fetchGoogleSheetContent(sheetId);
