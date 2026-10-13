@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import { getAssetPath } from "@/lib/assets";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -114,13 +115,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "favicon.ico", sizes: "any" },
-      { url: "assets/imgs/bethel-merch-main-logo.webp", type: "image/webp" },
+      { url: getAssetPath("/favicon.ico"), sizes: "any" },
+      { url: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"), type: "image/webp" },
     ],
-    shortcut: "assets/imgs/bethel-merch-main-logo.webp",
+    shortcut: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
     apple: [
       {
-        url: "assets/imgs/bethel-merch-main-logo.webp",
+        url: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
         sizes: "180x180",
         type: "image/webp",
       },

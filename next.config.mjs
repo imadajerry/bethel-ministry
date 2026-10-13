@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const isProd = process.env.NODE_ENV === "production";
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
-let repo = "";
+const isGithubActions = Boolean(process.env.GITHUB_ACTIONS);
+let repo = "/bethel-ministry";
 if (isGithubActions && process.env.GITHUB_REPOSITORY) {
   repo = `/${process.env.GITHUB_REPOSITORY.split("/")[1]}`;
-} else if (isProd && process.env.DEPLOY_TARGET === "gh-pages") {
-  repo = "/bethel-ministry";
 }
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
