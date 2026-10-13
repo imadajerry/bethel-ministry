@@ -1,0 +1,12 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+Host: https://imadajerry.github.io/bethel-ministry
+Sitemap: https://imadajerry.github.io/bethel-ministry/sitemap.xml
