@@ -139,21 +139,22 @@ export default function Navbar({ onCallClick }: NavbarProps) {
         </div>
       </div>
 
-      {/* Smooth Animated Mobile Menu Dropdown (Absolute overlay to prevent pushing down the page) */}
+      {/* Smooth Animated Mobile Menu Dropdown (Absolute overlay with solid white background) */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/98 backdrop-blur-md shadow-xl ${
+        className={`md:hidden absolute top-full left-0 right-0 z-50 overflow-hidden transition-all duration-300 ease-in-out bg-white shadow-2xl border-b border-neutral-200 ${
           mobileMenuOpen
-            ? "max-h-96 opacity-100 border-b border-neutral-200/80 pointer-events-auto"
-            : "max-h-0 opacity-0 border-none pointer-events-none"
+            ? "max-h-96 opacity-100 pointer-events-auto"
+            : "max-h-0 opacity-0 pointer-events-none"
         }`}
+        style={{ backgroundColor: "#ffffff" }}
       >
-        <div className="px-4 pt-3 pb-6 space-y-2">
+        <div className="px-4 pt-3 pb-6 space-y-2 bg-white">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="block px-3 py-2.5 text-base font-medium text-neutral-800 hover:bg-neutral-100/80 rounded-lg transition"
+              className="block px-3 py-2.5 text-base font-semibold text-neutral-900 hover:bg-neutral-100 rounded-xl transition"
             >
               {link.name}
             </a>
@@ -164,7 +165,7 @@ export default function Navbar({ onCallClick }: NavbarProps) {
       {/* Backdrop overlay for mobile menu */}
       {mobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 top-20 bg-black/20 backdrop-blur-xs z-[-1] animate-in fade-in duration-200"
+          className="md:hidden fixed inset-0 top-20 bg-black/40 backdrop-blur-xs z-30 animate-in fade-in duration-200"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
