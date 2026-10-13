@@ -16,12 +16,12 @@ export default function Footer({ onCallClick }: FooterProps) {
     <footer id="contact" className="w-full pt-12 pb-16 border-t border-neutral-200/80 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Prayer & Counseling CTA Banner */}
-        <div className="mb-14 p-6 sm:p-8 bg-neutral-50 border border-neutral-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-          <div className="space-y-1">
-            <h3 className="text-base sm:text-lg font-bold text-neutral-900">
+        <div className="mb-12 sm:mb-14 p-5 sm:p-7 lg:p-8 bg-neutral-50/80 border border-neutral-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+          <div className="space-y-1.5 max-w-xl">
+            <h3 className="text-[15px] sm:text-lg font-bold text-neutral-900 tracking-tight">
               {footer.ctaTitle}
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-600">
+            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
               {footer.ctaSubtitle}
             </p>
           </div>
@@ -29,7 +29,7 @@ export default function Footer({ onCallClick }: FooterProps) {
             <button
               onClick={onCallClick}
               type="button"
-              className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-medium hover:bg-neutral-800 transition shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-medium hover:bg-neutral-800 active:scale-[0.99] transition shadow-xs shrink-0"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>{footer.ctaButtonText}</span>
