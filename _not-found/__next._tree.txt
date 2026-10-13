@@ -1,4 +1,4 @@
-:HL["/bethel-ministry/_next/static/chunks/3yvnb7_2efn5-.css","style"]
+:HL["/_next/static/chunks/1t8nts9tur3m-.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
-0:{"b":"v8QRhuSLrVEsbQQyU70Jq","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"PyWIS1aYrHwdAXsdQ09DC","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
