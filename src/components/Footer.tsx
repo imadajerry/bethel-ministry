@@ -1,12 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
+import { useSiteContent } from "@/context/ContentContext";
 
 interface FooterProps {
   onCallClick?: () => void;
 }
 
 export default function Footer({ onCallClick }: FooterProps) {
+  const { content } = useSiteContent();
+  const { footer, contact, social } = content.texts;
+
   return (
     <footer id="contact" className="w-full pt-12 pb-16 border-t border-neutral-200/80 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,10 +18,10 @@ export default function Footer({ onCallClick }: FooterProps) {
         <div className="mb-14 p-6 sm:p-8 bg-neutral-50 border border-neutral-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div className="space-y-1">
             <h3 className="text-base sm:text-lg font-bold text-neutral-900">
-              Need Prayer or Spiritual Counseling?
+              {footer.ctaTitle}
             </h3>
             <p className="text-xs sm:text-sm text-neutral-600">
-              Our evangelists and ministry team are here to pray with you and support your journey.
+              {footer.ctaSubtitle}
             </p>
           </div>
           {onCallClick && (
@@ -27,7 +31,7 @@ export default function Footer({ onCallClick }: FooterProps) {
               className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white text-xs sm:text-sm font-medium hover:bg-neutral-800 transition shadow-xs"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Call Helpline</span>
+              <span>{footer.ctaButtonText}</span>
             </button>
           )}
         </div>
@@ -47,22 +51,22 @@ export default function Footer({ onCallClick }: FooterProps) {
               </div>
               <div>
                 <span className="block font-extrabold text-sm text-neutral-900 tracking-tight uppercase">
-                  Bethel Ministry
+                  {footer.brandTitle}
                 </span>
                 <span className="block text-[11px] text-neutral-500 font-medium">
-                  Thy Kingdom Come • ESTD 2014
+                  {footer.brandSubtitle}
                 </span>
               </div>
             </div>
             <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed text-justify">
-              Bethel Ministry is an evangelical organization based in Aizawl, Mizoram, serving as a beacon of Healing Ministry, spiritual revival, discipleship training, and youth empowerment.
+              {footer.bio}
             </p>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-900">
-              Quick Links
+              {footer.quickLinksTitle}
             </h4>
             <ul className="space-y-2 text-xs sm:text-[13px]">
               <li>
@@ -91,34 +95,34 @@ export default function Footer({ onCallClick }: FooterProps) {
           {/* Column 3: Contact Info */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-900">
-              Contact Us
+              {footer.contactTitle}
             </h4>
             <div className="space-y-2 text-xs sm:text-[13px]">
               <p>
                 <a
-                  href="mailto:bethelofficialministry@gmail.com"
+                  href={`mailto:${contact.email}`}
                   className="text-neutral-600 hover:text-black transition-colors inline-flex items-center gap-2 group"
                 >
                   <Mail className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-900 transition-colors shrink-0" />
-                  <span className="break-all">bethelofficialministry@gmail.com</span>
+                  <span className="break-all">{contact.email}</span>
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:9612977836"
+                  href={`tel:${contact.phone1.replace(/\s+/g, "")}`}
                   className="text-neutral-600 hover:text-black transition-colors inline-flex items-center gap-2 group"
                 >
                   <Phone className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-900 transition-colors shrink-0" />
-                  <span>+91 9612977836</span>
+                  <span>{contact.phone1}</span>
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:8976717098"
+                  href={`tel:${contact.phone2.replace(/\s+/g, "")}`}
                   className="text-neutral-600 hover:text-black transition-colors inline-flex items-center gap-2 group"
                 >
                   <Phone className="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-900 transition-colors shrink-0" />
-                  <span>+91 8976717098</span>
+                  <span>{contact.phone2}</span>
                 </a>
               </p>
             </div>
@@ -127,15 +131,15 @@ export default function Footer({ onCallClick }: FooterProps) {
           {/* Column 4: Follow & Social Media */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-900">
-              Follow & Watch
+              {footer.followTitle}
             </h4>
             <p className="text-xs text-neutral-500 leading-relaxed">
-              Watch gospel messages, youth camp worship, and stay connected with our community.
+              {footer.socialDescription}
             </p>
             <div className="flex items-center gap-2.5 pt-1">
               {/* YouTube */}
               <a
-                href="https://www.youtube.com/@bethelministrymizoramaizawl"
+                href={social.youtubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Bethel Ministry on YouTube"
@@ -149,7 +153,7 @@ export default function Footer({ onCallClick }: FooterProps) {
 
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/bethel_ministry"
+                href={social.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Bethel Ministry on Instagram"
@@ -163,7 +167,7 @@ export default function Footer({ onCallClick }: FooterProps) {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/BethelMizoram/"
+                href={social.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Bethel Ministry on Facebook"
@@ -181,7 +185,7 @@ export default function Footer({ onCallClick }: FooterProps) {
         {/* Bottom Bar: Copyright & 7level badge */}
         <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-neutral-400 text-center sm:text-left">
-            © {new Date().getFullYear()} Bethel Ministry Mizoram. All rights reserved.
+            © {new Date().getFullYear()} {footer.copyrightText}
           </p>
 
           <a

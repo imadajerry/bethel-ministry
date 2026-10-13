@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { X, Phone, Copy, Check } from "lucide-react";
+import { useSiteContent } from "@/context/ContentContext";
 
 interface CallModalProps {
   isOpen: boolean;
@@ -10,12 +11,14 @@ interface CallModalProps {
 
 export default function CallModal({ isOpen, onClose }: CallModalProps) {
   const [copiedNumber, setCopiedNumber] = useState<string | null>(null);
+  const { content } = useSiteContent();
+  const modalTexts = content.texts.callModal;
 
   if (!isOpen) return null;
 
   const phoneNumbers = [
-    { label: "Primary Office", number: "9612977836" },
-    { label: "Alternative Line", number: "8976717098" },
+    { label: modalTexts.phone1Label, number: modalTexts.phone1Number },
+    { label: modalTexts.phone2Label, number: modalTexts.phone2Number },
   ];
 
   const handleCopy = (num: string) => {
@@ -39,7 +42,7 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
               <Phone className="w-4 h-4" />
             </div>
             <h3 className="text-base font-bold text-neutral-900">
-              Contact Bethel Ministry
+              {modalTexts.title}
             </h3>
           </div>
           <button
@@ -51,7 +54,7 @@ export default function CallModal({ isOpen, onClose }: CallModalProps) {
         </div>
 
         <p className="text-xs text-neutral-500 leading-relaxed text-justify">
-          Reach out to our ministry offices for prayer, counseling, or event inquiries.
+          {modalTexts.description}
         </p>
 
         <div className="space-y-3">

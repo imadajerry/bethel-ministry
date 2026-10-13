@@ -4,12 +4,15 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
+import { useSiteContent } from "@/context/ContentContext";
 
 interface NavbarProps {
   onCallClick: () => void;
 }
 
 export default function Navbar({ onCallClick }: NavbarProps) {
+  const { content } = useSiteContent();
+  const navbarTexts = content.texts.navbar;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -71,7 +74,7 @@ export default function Navbar({ onCallClick }: NavbarProps) {
               type="button"
               className="inline-flex items-center justify-center px-6 py-2 rounded-full border border-neutral-900 text-sm font-medium text-neutral-900 bg-white hover:bg-neutral-900 hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
             >
-              Call us
+              {navbarTexts.callButtonText}
             </button>
           </div>
 
@@ -83,7 +86,7 @@ export default function Navbar({ onCallClick }: NavbarProps) {
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-900 text-xs font-medium text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Call us</span>
+              <span>{navbarTexts.callButtonText}</span>
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

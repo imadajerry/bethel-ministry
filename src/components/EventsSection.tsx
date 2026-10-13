@@ -3,65 +3,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
-
-interface EventItem {
-  id: string;
-  title: string;
-  category?: string;
-  season?: string;
-  image: string;
-  description?: string;
-}
-
-const eventsData: EventItem[] = [
-  {
-    id: "discipleship",
-    title: "Discipleship Training",
-    category: "Leadership & Foundation",
-    season: "Annual Ministry Program",
-    image: "/assets/imgs/events/01_discipleship_training.webp",
-    description:
-      "Equipping believers with foundational biblical teachings, spiritual discipline, and Christian leadership to nurture mature disciples for the Kingdom.",
-  },
-  {
-    id: "summer-camp",
-    title: "Youth Summer Camp",
-    category: "Youth Empowerment",
-    season: "Summer Gathering",
-    image: "/assets/imgs/events/03_youth_summer_camp.webp",
-    description:
-      "A vibrant spiritual gathering bringing youth together for fellowship, worship, and purpose-driven workshops that ignite spiritual revival.",
-  },
-  {
-    id: "gospel-camping",
-    title: "Gospel Camping",
-    category: "Spiritual Retreat",
-    season: "Spiritual Renewal",
-    image: "/assets/imgs/events/02_gospel_camping.webp",
-    description:
-      "Intensive spiritual retreats filled with fervent prayer, life transformation, and heartfelt praise in a focused setting away from worldly distractions.",
-  },
-  {
-    id: "crusade",
-    title: "Gospel Crusade",
-    category: "Mass Evangelism",
-    season: "Community Outreach",
-    image: "/assets/imgs/events/05_gospel_crusade.webp",
-    description:
-      "Large-scale evangelistic crusades bringing the message of salvation, healing, and hope across communities and cities with profound spiritual impact.",
-  },
-  {
-    id: "youth-festival",
-    title: "Mizoram Youth Festival",
-    category: "Worship & Revival",
-    season: "Statewide Celebration",
-    image: "/assets/imgs/events/04_mizoram_youth_festival.webp",
-    description:
-      "The grand annual celebration of music, worship, and spiritual revival featuring anointed gospel ministers, uniting thousands in exalted worship.",
-  },
-];
+import { useSiteContent } from "@/context/ContentContext";
+import { EventItem } from "@/data/defaultContent";
 
 export default function EventsSection() {
+  const { content } = useSiteContent();
+  const eventsData = content.events;
+  const eventsTexts = content.texts.events;
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   // References for bottom thumbnail strip scrolling
@@ -293,14 +241,14 @@ export default function EventsSection() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-2">
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight">
-              Events
+              {eventsTexts.title}
             </h2>
             <p className="mt-1 text-sm text-neutral-500">
-              Transformative gatherings, crusades, and spiritual empowerment programs
+              {eventsTexts.subtitle}
             </p>
           </div>
           <span className="text-xs text-neutral-400 font-medium hidden sm:block">
-            Click any event to explore details
+            {eventsTexts.subtext}
           </span>
         </div>
 

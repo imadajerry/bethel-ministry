@@ -37,3 +37,10 @@ assets/figma-*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal spreadsheets & CSVs
+sheets/
+public/sheets/
+*.csv
+GOOGLE_SHEETS_SETUP.md
+scripts/

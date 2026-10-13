@@ -1,99 +1,12 @@
 import React from "react";
 import Image from "next/image";
-
-interface TeamMember {
-  id: string;
-  name: string;
-  role?: string;
-  image: string;
-  scale?: number;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: "frederick",
-    name: "Frederick Lalrindika",
-    role: "(General Superintendent)",
-    image: "/assets/imgs/ministry-team-members/01_frederick_lalrindika.webp",
-    scale: 1.0,
-  },
-  {
-    id: "lalremmawia",
-    name: "Lalremmawia",
-    role: "(Executive Secretary / Evangelist)",
-    image: "/assets/imgs/ministry-team-members/02_lalremmawia.webp",
-    scale: 1.20,
-  },
-  {
-    id: "lalruatpuia",
-    name: "Lalruatpuia Chhakchhuak",
-    role: "(Secretary / Evangelist)",
-    image: "/assets/imgs/ministry-team-members/03_lalruatpuia_chhakchhuak.webp",
-    scale: 1.20,
-  },
-  {
-    id: "ricky",
-    name: "Ricky Zohmingliana",
-    image: "/assets/imgs/ministry-team-members/04_ricky_zohmingliana.webp",
-    scale: 1.0,
-  },
-  {
-    id: "isaac",
-    name: "Isaac Vanlalhruaia",
-    image: "/assets/imgs/ministry-team-members/05_isaac_vanlalhruaia.webp",
-    scale: 1.18,
-  },
-  {
-    id: "vanlalnghaka",
-    name: "C. Vanlalnghaka",
-    image: "/assets/imgs/ministry-team-members/06_c._vanlalnghaka.webp",
-    scale: 1.22,
-  },
-  {
-    id: "malsawmsanga",
-    name: "C. Malsawmsanga",
-    image: "/assets/imgs/ministry-team-members/07_c._malsawmsanga.webp",
-    scale: 1.10,
-  },
-  {
-    id: "nixon",
-    name: "Nixon Vanlalruata",
-    image: "/assets/imgs/ministry-team-members/08_nixon_vanlalruata.webp",
-    scale: 1.35,
-  },
-  {
-    id: "vanlalngheta",
-    name: "C. Vanlalngheta",
-    image: "/assets/imgs/ministry-team-members/09_c._vanlalngheta.webp",
-    scale: 1.22,
-  },
-  {
-    id: "ngurnunmawii",
-    name: "Ngurnunmawii Chhakchhuak",
-    image: "/assets/imgs/ministry-team-members/10_ngurnunmawii_chhakchhuak.webp",
-    scale: 1.08,
-  },
-  {
-    id: "lalrinfeli",
-    name: "Lalrinfeli",
-    image: "/assets/imgs/ministry-team-members/11_lalrinfeli.webp",
-    scale: 1.0,
-  },
-  {
-    id: "jennifer",
-    name: "Jennifer Lalremruati",
-    image: "/assets/imgs/ministry-team-members/12_jennifer_lalremruati.webp",
-    scale: 1.35,
-  },
-  {
-    id: "lalrinsangi",
-    name: "K. Lalrinsangi",
-    image: "/assets/imgs/ministry-team-members/13_k._lalrinsangi.webp",
-    scale: 1.14,
-  },
-];
+import { useSiteContent } from "@/context/ContentContext";
+import { TeamMember } from "@/data/defaultContent";
 
 export default function MinistryTeamSection() {
+  const { content } = useSiteContent();
+  const teamMembers = content.team;
+  const teamTexts = content.texts.team;
   // Mobile groupings (original Figma mobile row hierarchy)
   const mobileRow1 = teamMembers.slice(0, 3);
   const mobileRow2 = teamMembers.slice(3, 6);
@@ -161,7 +74,7 @@ export default function MinistryTeamSection() {
     <section id="team" className="w-full py-10 sm:py-14 md:py-16 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-neutral-900 mb-8 sm:mb-12 tracking-tight">
-          Ministry Team
+          {teamTexts.title}
         </h2>
 
         {/* 1. Mobile View: Strict 3-in-a-row on rows 1-3 (Prevents 2,1 wrapping on phones <480px) */}
