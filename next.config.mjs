@@ -16,6 +16,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH !== undefined
 const nextConfig = {
   output: "export",
   basePath: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   compress: true,
   poweredByHeader: false,
   images: {

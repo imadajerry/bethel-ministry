@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { useSiteContent } from "@/context/ContentContext";
+import { getAssetPath } from "@/lib/assets";
 
 interface FooterProps {
   onCallClick?: () => void;
@@ -43,7 +44,7 @@ export default function Footer({ onCallClick }: FooterProps) {
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 shrink-0">
                 <Image
-                  src="/assets/imgs/bethel-merch-banner-logo.webp"
+                  src={getAssetPath("/assets/imgs/bethel-merch-banner-logo.webp")}
                   alt="Bethel Ministry Emblem"
                   fill
                   className="object-contain"
@@ -196,7 +197,7 @@ export default function Footer({ onCallClick }: FooterProps) {
           >
             <div className="relative w-4 h-4 shrink-0">
               <Image
-                src="/assets/imgs/7level_logo_outlined.webp"
+                src={getAssetPath("/assets/imgs/7level_logo_outlined.webp")}
                 alt="7level Logo"
                 fill
                 loading="lazy"

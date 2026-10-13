@@ -69,14 +69,14 @@ export const metadata: Metadata = {
     siteName: "Bethel Ministry Mizoram",
     images: [
       {
-        url: "/assets/imgs/hero-banner.webp",
+        url: "assets/imgs/hero-banner.webp",
         width: 1200,
         height: 630,
         alt: "Bethel Ministry Mizoram - Live Worship & Youth Gathering",
         type: "image/webp",
       },
       {
-        url: "/assets/imgs/bethel-merch-banner-logo.webp",
+        url: "assets/imgs/bethel-merch-banner-logo.webp",
         width: 800,
         height: 800,
         alt: "Bethel Ministry Emblem - Thy Kingdom Come ESTD 2014",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     title: "Bethel Ministry Mizoram | Thy Kingdom Come",
     description:
       "A beacon of Healing Ministry, spiritual revival, and youth empowerment across Mizoram and beyond.",
-    images: ["/assets/imgs/hero-banner.webp"],
+    images: ["assets/imgs/hero-banner.webp"],
     creator: "@bethel_ministry",
   },
   robots: {
@@ -114,13 +114,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/assets/imgs/bethel-merch-main-logo.webp", type: "image/webp" },
+      { url: "favicon.ico", sizes: "any" },
+      { url: "assets/imgs/bethel-merch-main-logo.webp", type: "image/webp" },
     ],
-    shortcut: "/assets/imgs/bethel-merch-main-logo.webp",
+    shortcut: "assets/imgs/bethel-merch-main-logo.webp",
     apple: [
       {
-        url: "/assets/imgs/bethel-merch-main-logo.webp",
+        url: "assets/imgs/bethel-merch-main-logo.webp",
         sizes: "180x180",
         type: "image/webp",
       },

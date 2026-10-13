@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useSiteContent } from "@/context/ContentContext";
 import { TeamMember } from "@/data/defaultContent";
+import { getAssetPath } from "@/lib/assets";
 
 export default function MinistryTeamSection() {
   const { content } = useSiteContent();
@@ -30,7 +31,7 @@ export default function MinistryTeamSection() {
       {/* 1:1 Aspect Ratio Full-Bleed Photo with normalized zoom */}
       <div className="relative w-full aspect-square bg-white overflow-hidden">
         <Image
-          src={member.image}
+          src={getAssetPath(member.image)}
           alt={`${member.name}${member.role ? ` ${member.role}` : ""} - Bethel Ministry Leadership`}
           fill
           style={{

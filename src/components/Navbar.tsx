@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { useSiteContent } from "@/context/ContentContext";
+import { getAssetPath } from "@/lib/assets";
 
 interface NavbarProps {
   onCallClick: () => void;
@@ -45,7 +46,7 @@ export default function Navbar({ onCallClick }: NavbarProps) {
           >
             <div className="relative w-11 h-11 sm:w-12 sm:h-12">
               <Image
-                src="/assets/imgs/bethel-merch-banner-logo.webp"
+                src={getAssetPath("/assets/imgs/bethel-merch-banner-logo.webp")}
                 alt="Bethel Ministry Emblem - Home"
                 fill
                 className="object-contain"

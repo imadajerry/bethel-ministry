@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { useSiteContent } from "@/context/ContentContext";
 import { EventItem } from "@/data/defaultContent";
+import { getAssetPath } from "@/lib/assets";
 
 export default function EventsSection() {
   const { content } = useSiteContent();
@@ -214,7 +215,7 @@ export default function EventsSection() {
       {/* Event Card Image */}
       <div className="relative w-full aspect-[2.3/1] sm:aspect-[2.1/1] rounded-2xl overflow-hidden shadow-xs border border-neutral-100 bg-neutral-100">
         <Image
-          src={event.image}
+          src={getAssetPath(event.image)}
           alt={`${event.title} - Bethel Ministry Mizoram Event`}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -392,7 +393,7 @@ export default function EventsSection() {
                     }`}
                   >
                     <Image
-                      src={event.image}
+                      src={getAssetPath(event.image)}
                       alt={`${event.title} - Bethel Ministry Mizoram Program Showcase`}
                       fill
                       priority={idx === 0 || idx === selectedIndex}
@@ -484,7 +485,7 @@ export default function EventsSection() {
                       >
                         <div className="relative w-full aspect-[2/1] rounded-lg overflow-hidden bg-neutral-100">
                           <Image
-                            src={event.image}
+                            src={getAssetPath(event.image)}
                             alt={`${event.title} thumbnail`}
                             fill
                             sizes="124px"

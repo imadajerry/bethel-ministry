@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useSiteContent } from "@/context/ContentContext";
+import { getAssetPath } from "@/lib/assets";
 
 export default function AboutSection() {
   const { content } = useSiteContent();
@@ -34,7 +35,7 @@ export default function AboutSection() {
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
             <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-64 md:h-64 lg:w-72 lg:h-72">
               <Image
-                src="/assets/imgs/bethel-merch-banner-logo.webp"
+                src={getAssetPath("/assets/imgs/bethel-merch-banner-logo.webp")}
                 alt="Bethel Ministry Emblem - Thy Kingdom Come ESTD 2014"
                 fill
                 loading="lazy"
