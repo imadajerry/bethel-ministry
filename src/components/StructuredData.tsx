@@ -69,7 +69,7 @@ export default function StructuredData() {
       {
         "@type": "Person",
         name: "Lalruatpuia Chhakchhuak",
-        jobTitle: "Secretary / Guitarist",
+        jobTitle: "Secretary / Music Director",
       },
     ],
     knowsAbout: [

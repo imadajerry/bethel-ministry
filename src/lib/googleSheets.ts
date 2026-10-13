@@ -59,10 +59,21 @@ export function parseCSV(csvText: string): string[][] {
 }
 
 /**
+ * Extracts Google Sheet ID whether user passes the raw ID or full Google Sheets URL
+ */
+export function extractSheetId(input: string): string {
+  if (!input) return "";
+  const trimmed = input.trim();
+  const match = trimmed.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+  if (match) return match[1];
+  return trimmed;
+}
+
+/**
  * Builds Google Sheets CSV export URL
  */
 export function getSheetCsvUrl(sheetId: string, sheetName?: string): string {
-  const cleanId = sheetId.trim();
+  const cleanId = extractSheetId(sheetId);
   const base = `https://docs.google.com/spreadsheets/d/${cleanId}/gviz/tq?tqx=out:csv`;
   return sheetName ? `${base}&sheet=${encodeURIComponent(sheetName)}` : base;
 }

@@ -9,8 +9,8 @@
  */
 
 export const GOOGLE_SHEETS_CONFIG = {
-  // Replace with your Google Sheet ID or set NEXT_PUBLIC_GOOGLE_SHEET_ID
-  sheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID || "",
+  // Google Sheet ID connected to Bethel Ministry
+  sheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID || "1_HXIBIeQJhtjSh-lJoadplNTueXh993D0Zm6BYZOlKw",
 
   // Sheet Tab Names (default names matching template sheets)
   sheets: {
