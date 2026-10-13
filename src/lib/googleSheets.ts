@@ -80,8 +80,13 @@ export function applyTextsFromRows(base: SiteContent, rows: string[][]): SiteCon
   const header = rows[0].map((h) => h.toLowerCase().trim());
   const sectionIdx = header.findIndex((h) => h.includes("section"));
   const keyIdx = header.findIndex((h) => h.includes("key"));
+  // Exclude sectionIdx and keyIdx so "text" in a key-column header (e.g. "call_button_text")
+  // does NOT accidentally pick the key column as the value column.
   const valueIdx = header.findIndex(
-    (h) => h.includes("value") || h.includes("content") || h.includes("text")
+    (h, idx) =>
+      idx !== sectionIdx &&
+      idx !== keyIdx &&
+      (h.includes("value") || h.includes("content") || h.includes("text"))
   );
 
   if (keyIdx === -1 || valueIdx === -1) {
@@ -150,23 +155,8 @@ export function applyTextsFromRows(base: SiteContent, rows: string[][]): SiteCon
     } else if (k.match(/copyright/i)) {
       updated.texts.footer.copyrightText = value;
     }
-    // Contact
-    else if (k.match(/contactemail|email/i)) {
-      updated.texts.contact.email = value;
-    } else if (k.match(/phone1|primaryphone/i)) {
-      updated.texts.contact.phone1 = value;
-    } else if (k.match(/phone2|secondaryphone/i)) {
-      updated.texts.contact.phone2 = value;
-    }
-    // Social Links
-    else if (k.match(/youtube/i)) {
-      updated.texts.social.youtubeUrl = value;
-    } else if (k.match(/instagram/i)) {
-      updated.texts.social.instagramUrl = value;
-    } else if (k.match(/facebook/i)) {
-      updated.texts.social.facebookUrl = value;
-    }
-    // Call Modal
+    // Call Modal — must come BEFORE generic contact/phone matchers to avoid
+    // "phone1_number" or "phone1label" being swallowed by the broader /phone1/ regex.
     else if (k.match(/callmodaltitle/i)) {
       updated.texts.callModal.title = value;
     } else if (k.match(/callmodaldesc/i)) {
@@ -179,6 +169,22 @@ export function applyTextsFromRows(base: SiteContent, rows: string[][]): SiteCon
       updated.texts.callModal.phone2Label = value;
     } else if (k.match(/phone2number/i)) {
       updated.texts.callModal.phone2Number = value;
+    }
+    // Contact — use stricter "contactphone" prefix so they never match modal keys
+    else if (k.match(/contactemail|email/i)) {
+      updated.texts.contact.email = value;
+    } else if (k.match(/contactphone1|primaryphone/i)) {
+      updated.texts.contact.phone1 = value;
+    } else if (k.match(/contactphone2|secondaryphone/i)) {
+      updated.texts.contact.phone2 = value;
+    }
+    // Social Links
+    else if (k.match(/youtube/i)) {
+      updated.texts.social.youtubeUrl = value;
+    } else if (k.match(/instagram/i)) {
+      updated.texts.social.instagramUrl = value;
+    } else if (k.match(/facebook/i)) {
+      updated.texts.social.facebookUrl = value;
     }
   }
 

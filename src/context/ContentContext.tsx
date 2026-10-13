@@ -21,8 +21,9 @@ const ContentContext = createContext<ContentContextType>({
   refreshContent: async () => {},
 });
 
-const CACHE_KEY = "bethel_site_content_cache";
-const CACHE_TIME_KEY = "bethel_site_content_cache_time";
+// v2: bumped to invalidate stale cache that may contain "phone1_number" placeholder values
+const CACHE_KEY = "bethel_site_content_cache_v2";
+const CACHE_TIME_KEY = "bethel_site_content_cache_time_v2";
 
 export function ContentProvider({ children }: { children: React.ReactNode }) {
   const [content, setContent] = useState<SiteContent>(defaultSiteContent);
