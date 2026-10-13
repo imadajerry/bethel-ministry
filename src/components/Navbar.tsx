@@ -32,6 +32,29 @@ export default function Navbar({ onCallClick }: NavbarProps) {
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const headerOffset = 80; // 80px sticky header height (h-20)
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      if (window.location.hash !== href) {
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-xs transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,6 +86,7 @@ export default function Navbar({ onCallClick }: NavbarProps) {
                 <a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="hover:text-black transition-colors duration-150 py-1"
                 >
                   {link.name}
@@ -115,27 +139,35 @@ export default function Navbar({ onCallClick }: NavbarProps) {
         </div>
       </div>
 
-      {/* Smooth Animated Mobile Menu Dropdown */}
+      {/* Smooth Animated Mobile Menu Dropdown (Absolute overlay to prevent pushing down the page) */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white ${
+        className={`md:hidden absolute top-full left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out bg-white/98 backdrop-blur-md shadow-xl ${
           mobileMenuOpen
-            ? "max-h-96 opacity-100 border-b border-neutral-200"
+            ? "max-h-96 opacity-100 border-b border-neutral-200/80 pointer-events-auto"
             : "max-h-0 opacity-0 border-none pointer-events-none"
         }`}
       >
-        <div className="px-4 pt-2 pb-6 space-y-3">
+        <div className="px-4 pt-3 pb-6 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-neutral-800 hover:bg-neutral-50 rounded-lg transition"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="block px-3 py-2.5 text-base font-medium text-neutral-800 hover:bg-neutral-100/80 rounded-lg transition"
             >
               {link.name}
             </a>
           ))}
         </div>
       </div>
+
+      {/* Backdrop overlay for mobile menu */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-20 bg-black/20 backdrop-blur-xs z-[-1] animate-in fade-in duration-200"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
     </header>
   );
 }

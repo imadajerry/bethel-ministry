@@ -13,7 +13,7 @@ export default function Footer({ onCallClick }: FooterProps) {
   const { footer, contact, social } = content.texts;
 
   return (
-    <footer id="contact" className="w-full pt-12 pb-16 border-t border-neutral-200/80 bg-white">
+    <footer id="contact" className="w-full pt-12 pb-16 border-t border-neutral-200/80 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Prayer & Counseling CTA Banner */}
         <div className="mb-14 p-6 sm:p-8 bg-neutral-50 border border-neutral-200/80 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
