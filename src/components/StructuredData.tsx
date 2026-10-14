@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function StructuredData() {
-  const baseUrl = "https://imadajerry.github.io/bethel-ministry";
+  const baseUrl = "https://www.bethelministrymizoram.com";
 
   // Organization / Church Schema
   const organizationSchema = {

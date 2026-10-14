@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://imadajerry.github.io/bethel-ministry/"),
+  metadataBase: new URL("https://www.bethelministrymizoram.com/"),
   title: {
     default: "Bethel Ministry Mizoram | Thy Kingdom Come - Official Website",
     template: "%s | Bethel Ministry Mizoram",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Bethel Ministry Mizoram",
-      url: "https://imadajerry.github.io/bethel-ministry/",
+      url: "https://www.bethelministrymizoram.com/",
     },
   ],
   creator: "Bethel Ministry Mizoram",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "Bethel Ministry Mizoram | Thy Kingdom Come",
     description:
       "A prominent Christian evangelical organization based in Aizawl, Mizoram, India, fostering spiritual renewal, Healing Ministry, and youth empowerment.",
-    url: "https://imadajerry.github.io/bethel-ministry/",
+    url: "https://www.bethelministrymizoram.com/",
     siteName: "Bethel Ministry Mizoram",
     images: [
       {
