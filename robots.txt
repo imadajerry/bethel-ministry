@@ -8,5 +8,5 @@ Allow: /
 User-Agent: Bingbot
 Allow: /
 
-Host: https://imadajerry.github.io/bethel-ministry
-Sitemap: https://imadajerry.github.io/bethel-ministry/sitemap.xml
+Host: https://www.bethelministrymizoram.com
+Sitemap: https://www.bethelministrymizoram.com/sitemap.xml
