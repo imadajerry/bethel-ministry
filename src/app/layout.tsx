@@ -116,14 +116,16 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: getAssetPath("/favicon.ico"), sizes: "any" },
-      { url: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"), type: "image/webp" },
+      { url: getAssetPath("/icon-48.png"), sizes: "48x48", type: "image/png" },
+      { url: getAssetPath("/icon-96.png"), sizes: "96x96", type: "image/png" },
+      { url: getAssetPath("/icon-192.png"), sizes: "192x192", type: "image/png" },
     ],
-    shortcut: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
+    shortcut: getAssetPath("/favicon.ico"),
     apple: [
       {
-        url: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
+        url: getAssetPath("/apple-touch-icon.png"),
         sizes: "180x180",
-        type: "image/webp",
+        type: "image/png",
       },
     ],
   },

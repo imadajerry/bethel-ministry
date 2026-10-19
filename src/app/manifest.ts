@@ -15,15 +15,15 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#ffffff",
     icons: [
       {
-        src: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
+        src: getAssetPath("/icon-192.png"),
         sizes: "192x192",
-        type: "image/webp",
+        type: "image/png",
         purpose: "any",
       },
       {
-        src: getAssetPath("/assets/imgs/bethel-merch-main-logo.webp"),
+        src: getAssetPath("/icon-512.png"),
         sizes: "512x512",
-        type: "image/webp",
+        type: "image/png",
         purpose: "maskable",
       },
     ],
